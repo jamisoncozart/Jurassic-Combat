@@ -127,9 +127,24 @@ l  .                _.    ___     _>-/~                  _._ _.-    .-~ ~-.     
     {
     while(newPark.getDinoDictionary()[dino1].getHealth() > 0 && newPark.getDinoDictionary()[dino2].getHealth() > 0)
     {
-      newPark.fightDinos(dino1, dino2);
-      Console.Write($"{dino1}: {newPark.getDinoDictionary()[dino1].getHealth()}, {dino2}: {newPark.getDinoDictionary()[dino2].getHealth()}\n");
-      Thread.Sleep(500);
+      Console.Write("Attack(a), Rest(r) or Quit(q)?");
+      string choice = Console.ReadLine().ToLower();
+      if (choice == "a")
+      {
+        Thread.Sleep(500);
+        newPark.fightDinos(dino1, dino2);
+        Console.Write($"{dino1}: {newPark.getDinoDictionary()[dino1].getHealth()}, {dino2}: {newPark.getDinoDictionary()[dino2].getHealth()}\n");
+      }
+      else if (choice == "r")
+      {
+        Thread.Sleep(500);
+        newPark.restDino(dino1, dino2);
+        Console.Write($"{dino1}: {newPark.getDinoDictionary()[dino1].getHealth()}, {dino2}: {newPark.getDinoDictionary()[dino2].getHealth()}\n");
+      }
+      else if (choice == "q")
+      {
+        GameMenu();
+      }
     }
     Console.ResetColor();
     GameMenu();
@@ -140,6 +155,7 @@ l  .                _.    ___     _>-/~                  _._ _.-    .-~ ~-.     
       fightDinos();
     }
   }
+
   public static void makeBosses()
   {
     newPark.addDino("Phil", "T-Rex");

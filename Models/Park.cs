@@ -47,6 +47,15 @@ namespace Models
       }
       return dinoNames;
     }
+
+    public void restDino(string dino1, string dino2)
+    {
+      Random rnd = new Random();
+      int d1Heal = rnd.Next(1, dinoPark[dino1].getDef());
+      int d2Att = rnd.Next(1, dinoPark[dino2].getAtt());
+      dinoPark[dino1].setHealth(dinoPark[dino1].getHealth()+d1Heal-(d2Att/2));
+    }
+
     public void fightDinos(string dino1, string dino2)
     {
       Random rnd = new Random();
