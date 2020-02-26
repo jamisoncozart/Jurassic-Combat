@@ -9,8 +9,10 @@ class Program
   
   public static void Main()
   {
-    Console.WriteLine("Welcome to Jurassic Combat!");
-    Console.WriteLine("---------------------------");
+    Console.BackgroundColor = ConsoleColor.Green;
+    Console.ForegroundColor = ConsoleColor.Black;
+    Console.WriteLine("{0,35}","\n\nWelcome to Jurassic Combat!\n");
+    Console.WriteLine("---------------------------\n");
     makeBosses();
     GameMenu();
   }
@@ -23,6 +25,7 @@ class Program
     if (menuChoice.ToLower() == "exit")
     {
       Console.WriteLine("Thank you for playing!");
+      Console.ResetColor();
       Environment.Exit(0);
     }
     else if (menuChoice.ToLower() == "add")
@@ -35,6 +38,28 @@ class Program
     }
     else if (menuChoice.ToLower() == "fight")
     {
+      Console.WriteLine(@" 
+                                             ____     
+ ___                                      .-~    '.
+`-._~-.                                  / /  ~@\   )      
+     \  \                               | /  \~\.  `\      
+     ]  |                              /  |  |< ~\(..)      
+    /   !                        _.--~T   \  \<   .,,                     .       .
+   /   /                 ____.--~ .    _  /~\ \< /                       / `.   .' \
+  /   /             .-~~'        /|   /o\ /-~\ \_|               .---.  <    > <    >  .---.
+ /   /             /     )      |o|  / /|o/_   '--'              |    \  \ - ~ ~ - /  /    |
+/   /           .-'(     l__   _j \_/ / /\|~    .                 ~-..-~             ~-..-~
+/    l          /    \       ~~~|    `/ / / \.__/l_           \~~~\.'                    `./~~~/
+|     \     _.-'      ~-\__     l      /_/~-.___.--~           \__/                        \__/
+|      ~---~           /   ~~'---\_    __[o,                    /                  .-    .  \
+l  .                _.    ___     _>-/~                  _._ _.-    .-~ ~-.       /       }   \/~~~/
+\  \     .      .-~   .-~   ~>--'  /                 _.-'q  }~     /       }     {        ;    \__/
+ \  ~---'            /         _.-'                 {'__,  /      (       /      {       /      `. ,~~|   .     .
+  '-.,_____.,_  _.--~\     _.-~                      `''''='~~-.__(      /_      |      /- _      `..-'   \\   //
+              ~~     (   _}                                      / \   =/  ~~--~~{    ./|    ~-.     `-..__\\_//_.-'
+                     `. ~(                                      {   \  +\         \  =\ (        ~ - . _ _ _..---~
+                       )  \                                     |  | {   }         \   \_\
+                 /,`--'~\--'~\                                 '---.o___,'       .o___,'");
       fightDinos();
     }
   }
@@ -82,6 +107,8 @@ class Program
   }
   public static void fightDinos()
   {
+    Console.BackgroundColor = ConsoleColor.Red;
+    Console.ForegroundColor = ConsoleColor.Black;
     Console.Write("Enter name of first dino: ");
     string dino1 = Console.ReadLine();
     if(!newPark.dinoExists(dino1))
@@ -104,6 +131,7 @@ class Program
       Console.Write($"{dino1}: {newPark.getDinoDictionary()[dino1].getHealth()}, {dino2}: {newPark.getDinoDictionary()[dino2].getHealth()}\n");
       Thread.Sleep(500);
     }
+    Console.ResetColor();
     GameMenu();
     }
     else
