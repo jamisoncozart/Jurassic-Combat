@@ -36,9 +36,17 @@ namespace Models
     {
       return _def;
     }
+    public void setDef(int defense)
+    {
+      _def = defense;
+    }
     public int getAtt()
     {
       return _att;
+    }
+    public void setAtt(int attack)
+    {
+      _att = attack;
     }
   }
 }
