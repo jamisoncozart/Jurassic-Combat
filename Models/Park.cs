@@ -7,6 +7,18 @@ namespace Models
   {
     public static Dictionary<string, Dino> dinoPark = new Dictionary<string, Dino>();
 
+    public bool dinoExists(string name)
+    {
+      foreach (KeyValuePair<string, Dino> dino in dinoPark)
+      {
+        if(dino.Key == name)
+        {
+          return true;
+        }
+      }
+      return false;
+    }
+
     public void addDino(string name, string species)
     {
       dinoPark[name] = new Dino(species);
@@ -15,12 +27,16 @@ namespace Models
 
     public string displayDino(string name)
     {
-      string spec = dinoPark[name].getSpecies();
-      int life = dinoPark[name].getHealth();
-      int attack = dinoPark[name].getAtt();
-      int defense = dinoPark[name].getDef();
-      string dinoStats = $"Name: {name}, Species: {spec}, Health: {life}, Attack: {attack}, Defense: {defense}";
-      return dinoStats;
+      if(dinoExists(name))
+      {
+        string spec = dinoPark[name].getSpecies();
+        int life = dinoPark[name].getHealth();
+        int attack = dinoPark[name].getAtt();
+        int defense = dinoPark[name].getDef();
+        string dinoStats = $"Name: {name}, Species: {spec}, Health: {life}, Attack: {attack}, Defense: {defense}";
+        return dinoStats;
+      }
+      return "Error: That name does not exist in the Dino Park";
     }
     public string listDinos()
     {

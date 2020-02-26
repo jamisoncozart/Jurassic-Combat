@@ -41,11 +41,19 @@ class Program
   {
     Console.Write("\nPlease enter a dino name: ");
     string inputName = Console.ReadLine();
-    Console.Write("Please enter a dino species: ");
-    string inputSpecies = Console.ReadLine();
-    newPark.addDino(inputName, inputSpecies);
-    Console.WriteLine(newPark.displayDino(inputName));
-    GameMenu();
+    if(!newPark.dinoExists(inputName))
+    {
+      Console.Write("Please enter a dino species: ");
+      string inputSpecies = Console.ReadLine();
+      newPark.addDino(inputName, inputSpecies);
+      Console.WriteLine(newPark.displayDino(inputName));
+      GameMenu();
+    }
+    else
+    {
+      Console.WriteLine("That Dino already exists!");
+      CreateDino();
+    }
   }
 
   public static void viewDinos()
@@ -61,11 +69,12 @@ class Program
     {
       Console.Write("Please enter the name of your Dino: ");
       string dinoName = Console.ReadLine();
-      foreach(Dino name in newPark)
-      {
-        
-      }
       Console.WriteLine(newPark.displayDino(dinoName));
+      viewDinos();
+    }
+    else
+    {
+      Console.WriteLine("Sorry, that is not a command.");
       viewDinos();
     }
   }
@@ -73,8 +82,20 @@ class Program
   {
     Console.Write("Enter name of first dino: ");
     string dino1 = Console.ReadLine();
+    if(!newPark.dinoExists(dino1))
+    {
+      Console.Write("Please enter an existing Dino!");
+      fightDinos();
+    }
     Console.Write("Enter name of second dino: ");
     string dino2 = Console.ReadLine();
+    if(!newPark.dinoExists(dino2))
+    {
+      Console.Write("Please enter an existing Dino!");
+      fightDinos();
+    }
+    if(dino1 != dino2)
+    {
     while(newPark.getDinoDictionary()[dino1].getHealth() > 0 && newPark.getDinoDictionary()[dino2].getHealth() > 0)
     {
       newPark.fightDinos(dino1, dino2);
@@ -82,5 +103,11 @@ class Program
       Thread.Sleep(500);
     }
     GameMenu();
+    }
+    else
+    {
+      Console.WriteLine("You cannot have a 1 Dino battle!");
+      fightDinos();
+    }
   }
 }
