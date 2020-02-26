@@ -28,6 +28,10 @@ namespace Models
     {
       return _health;
     }
+    public void setHealth(int newHealth)
+    {
+      _health = newHealth;
+    }
     public int getDef()
     {
       return _def;
