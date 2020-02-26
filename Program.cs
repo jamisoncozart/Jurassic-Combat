@@ -11,6 +11,7 @@ class Program
   {
     Console.WriteLine("Welcome to Jurassic Combat!");
     Console.WriteLine("---------------------------");
+    makeBosses();
     GameMenu();
   }
 
@@ -22,6 +23,7 @@ class Program
     if (menuChoice.ToLower() == "exit")
     {
       Console.WriteLine("Thank you for playing!");
+      Environment.Exit(0);
     }
     else if (menuChoice.ToLower() == "add")
     {
@@ -51,7 +53,7 @@ class Program
     }
     else
     {
-      Console.WriteLine("That Dino already exists!");
+      Console.WriteLine("That Dino already exists!\n");
       CreateDino();
     }
   }
@@ -84,14 +86,14 @@ class Program
     string dino1 = Console.ReadLine();
     if(!newPark.dinoExists(dino1))
     {
-      Console.Write("Please enter an existing Dino!");
+      Console.Write("Please enter an existing Dino!\n");
       fightDinos();
     }
     Console.Write("Enter name of second dino: ");
     string dino2 = Console.ReadLine();
     if(!newPark.dinoExists(dino2))
     {
-      Console.Write("Please enter an existing Dino!");
+      Console.Write("Please enter an existing Dino!\n");
       fightDinos();
     }
     if(dino1 != dino2)
@@ -106,8 +108,17 @@ class Program
     }
     else
     {
-      Console.WriteLine("You cannot have a 1 Dino battle!");
+      Console.WriteLine("You cannot have a 1 Dino battle!\n");
       fightDinos();
     }
+  }
+  public static void makeBosses()
+  {
+    newPark.addDino("Phil", "T-Rex");
+    newPark.getDinoDictionary()["Phil"].setAtt(20);
+    newPark.getDinoDictionary()["Phil"].setDef(10);
+    newPark.addDino("Bertha", "Stegasaurus");
+    newPark.getDinoDictionary()["Bertha"].setAtt(15);
+    newPark.getDinoDictionary()["Bertha"].setDef(20);
   }
 }
