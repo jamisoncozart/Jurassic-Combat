@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Threading;
 using Models;
 
 class Program
@@ -30,6 +31,10 @@ class Program
     {
       viewDinos();
     }
+    else if (menuChoice.ToLower() == "fight")
+    {
+      fightDinos();
+    }
   }
 
   public static void CreateDino()
@@ -56,8 +61,26 @@ class Program
     {
       Console.Write("Please enter the name of your Dino: ");
       string dinoName = Console.ReadLine();
+      foreach(Dino name in newPark)
+      {
+        
+      }
       Console.WriteLine(newPark.displayDino(dinoName));
       viewDinos();
     }
+  }
+  public static void fightDinos()
+  {
+    Console.Write("Enter name of first dino: ");
+    string dino1 = Console.ReadLine();
+    Console.Write("Enter name of second dino: ");
+    string dino2 = Console.ReadLine();
+    while(newPark.getDinoDictionary()[dino1].getHealth() > 0 && newPark.getDinoDictionary()[dino2].getHealth() > 0)
+    {
+      newPark.fightDinos(dino1, dino2);
+      Console.Write($"{dino1}: {newPark.getDinoDictionary()[dino1].getHealth()}, {dino2}: {newPark.getDinoDictionary()[dino2].getHealth()}\n");
+      Thread.Sleep(500);
+    }
+    GameMenu();
   }
 }
