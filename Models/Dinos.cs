@@ -16,7 +16,7 @@ namespace Models
     public void setAttDef()
     {
       Random rnd = new Random();
-      _att = rnd.Next(1,31);
+      _att = rnd.Next(10,30);
       _def = 30 - _att;
     }
 
