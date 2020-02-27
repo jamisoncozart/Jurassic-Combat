@@ -8,7 +8,7 @@ Download the .zip file and extract all files into directory of your choice OR cl
 
 ### Prerequisites
 
-1. .NET Framework 
+1. [.NET Framework](https://dotnet.microsoft.com/download/thank-you/dotnet-sdk-2.2.106-macos-x64-installer) 
 2. Text Editor (Visual Studio Code)
 
 ### Installing
