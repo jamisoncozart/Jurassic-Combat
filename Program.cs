@@ -2,6 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading;
 using Models;
+using System.Drawing;
+
+using Console = Colorful.Console;
 
 class Program
 {
@@ -9,10 +12,12 @@ class Program
   
   public static void Main()
   {
-    Console.BackgroundColor = ConsoleColor.Green;
-    Console.ForegroundColor = ConsoleColor.Black;
-    Console.WriteLine("{0,35}","\n\nWelcome to Jurassic Combat!\n");
-    Console.WriteLine("---------------------------\n");
+    Console.WriteLine("============================================================================================================\n", Color.Green);
+
+    Console.WriteAscii("JURASSIC COMBAT", Color.Green);
+
+    // Console.WriteLine("\n\nWelcome to Jurassic Combat!\n", Color.Green);
+    Console.WriteLine("============================================================================================================\n", Color.Green);
     makeBosses();
     GameMenu();
   }
@@ -107,8 +112,8 @@ l  .                _.    ___     _>-/~                  _._ _.-    .-~ ~-.     
   }
   public static void fightDinos()
   {
-    Console.BackgroundColor = ConsoleColor.Red;
-    Console.ForegroundColor = ConsoleColor.Black;
+    // Console.BackgroundColor = ConsoleColor.Red;
+    // Console.ForegroundColor = ConsoleColor.Black;
     Console.Write("Enter name of first dino: ");
     string dino1 = Console.ReadLine();
     if(!newPark.dinoExists(dino1))
@@ -143,6 +148,7 @@ l  .                _.    ___     _>-/~                  _._ _.-    .-~ ~-.     
       }
       else if (choice == "q")
       {
+
         GameMenu();
       }
     }
