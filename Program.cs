@@ -12,20 +12,25 @@ class Program
   
   public static void Main()
   {
-    Console.WriteLine("============================================================================================================\n", Color.Green);
+    Console.WriteLine("=================================================================================================================================================================================\n", Color.Green);
 
-    Console.WriteAscii("JURASSIC COMBAT", Color.Green);
+    Console.WriteAscii("       JURASSIC COMBAT", Color.Green);
 
     // Console.WriteLine("\n\nWelcome to Jurassic Combat!\n", Color.Green);
-    Console.WriteLine("============================================================================================================\n", Color.Green);
+    Console.WriteLine("=================================================================================================================================================================================\n", Color.Green);
     makeBosses();
     GameMenu();
   }
 
   public static void GameMenu()
   {
-    Console.WriteLine("\nWould you like to: ");
-    Console.WriteLine("[Add] [View] [Fight] [Exit]");
+    Console.WriteAscii(@"| Add | View | Fight | Exit |", Color.Yellow);
+    Console.WriteLine("             Add a New Dino                           View All Dinos                              Dino Combat!!!", Color.Yellow);
+
+    // Console.WriteLine(@"
+    // ------- -------- --------- --------
+    // | Add | | View | | Fight | | Exit |
+    // ------- -------- --------- --------", Color.Yellow);
     string menuChoice = Console.ReadLine();
     if (menuChoice.ToLower() == "exit")
     {
@@ -64,7 +69,7 @@ l  .                _.    ___     _>-/~                  _._ _.-    .-~ ~-.     
               ~~     (   _}                                      / \   =/  ~~--~~{    ./|    ~-.     `-..__\\_//_.-'
                      `. ~(                                      {   \  +\         \  =\ (        ~ - . _ _ _..---~
                        )  \                                     |  | {   }         \   \_\
-                 /,`--'~\--'~\                                 '---.o___,'       .o___,'");
+                 /,`--'~\--'~\                                 '---.o___,'       .o___,'", Color.Red);
       fightDinos();
     }
   }
